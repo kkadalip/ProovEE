@@ -1,11 +1,25 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Getting Started: Serving Web Content</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Weather stations</title>
 </head>
 <body>
-<p>Get your zxcxzc greeting <a href="/greeting">here</a></p>
-<p>Get your hello <a href="/hello">here</a></p>
+
+<h2>Weather stations</h2>
+<p>Pick one of the following:</p>
+<p>Greeting <a href="/greeting">here</a></p>
+<p>Hello <a href="/hello">here</a></p>
+
+<div id="weather_container">
+
+</div>
+<!-- Load React. -->
+<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<!-- Load our React component. -->
+<script src="weather.js"></script>
+
 </body>
 </html>

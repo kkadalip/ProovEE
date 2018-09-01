@@ -17,6 +17,5 @@ public class Observations {
 	@XmlElement(name = "station")
 	private List<Station> stations;
 	@XmlAttribute(name = "timestamp")
-	private String timestamp;
+	private Long timestamp;
 }
-

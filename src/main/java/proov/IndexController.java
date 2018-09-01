@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -20,6 +21,8 @@ import proov.model.Station;
 @Slf4j
 @Controller
 public class IndexController {
+
+	List<Station> displayedStations = null;
 
 	@Value("${download.url}")
 	private String downloadURL;
@@ -52,7 +55,8 @@ public class IndexController {
 
 		if (observations != null) {
 			log.info("Observations timestamp: " + observations.getTimestamp());
-			for (Station station : observations.getStations()) {
+			displayedStations = observations.getStations();
+			for (Station station : displayedStations) {
 				log.info(String.valueOf(station));
 			}
 		} else {

@@ -5,20 +5,20 @@ import lombok.Data;
 @Data
 public class Station {
 	private String name;
-	private String wmoCode;
+	private String wmocode;
 	private Float longitude;
 	private Float latitude;
 	private String phenomenon;
 	private Float visibility;
 	private Float precipitations;
-	private Float airPressure;
-	private Float relativeHumidity;
-	private Float airTemperature;
-	private Long windDirection;
-	private Float windSpeed;
-	private Float windSpeedMax;
-	private Long waterLevel;
-	private Long waterlevelEh2000;
-	private Float waterTemperature;
-	private Float uvIndex;
+	private Float airpressure;
+	private Float relativehumidity;
+	private Float airtemperature;
+	private Long winddirection;
+	private Float windspeed;
+	private Float windspeedmax;
+	private Long waterlevel;
+	private Long waterlevel_eh2000;
+	private Float watertemperature;
+	private Float uvindex;
 }

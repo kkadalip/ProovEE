@@ -1,9 +1,12 @@
 buildscript {
+    ext {
+        springBootVersion = '2.0.4.RELEASE'
+    }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
@@ -18,24 +21,26 @@ bootJar {
     baseName = 'proov-ee'
     version '1.0'
 }
-
 // Used by 'Spring Boot Gradle Plugin' in combination with 'Devtools' makes HTML/JS/CSS reloadable.
 bootRun {
     sourceResources sourceSets.main
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 repositories {
     mavenCentral()
 }
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.boot:spring-boot-devtools'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-data-rest'
+    compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.codehaus.groovy:groovy-all'
     compile 'org.slf4j:slf4j-api:1.7.25'
     compile 'org.projectlombok:lombok:1.18.2'
@@ -43,6 +48,7 @@ dependencies {
     compile 'commons-io:commons-io:2.6'
     compile 'javax.xml.bind:jaxb-api:2.3.0'
     compile 'javax.xml.stream:stax-api:1.0-2'
+    runtime 'com.h2database:h2'
     testCompile 'junit:junit:4.12'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }

@@ -2,6 +2,23 @@
 
             <observations timestamp="1535821209">
 	<station>
+		<name>Näidis linn kõigi väärtustega</name>
+		<wmocode></wmocode>
+		<longitude>22.4396138887251</longitude>
+		<latitude>58.2808499997148</latitude>
+		<phenomenon>Sunny</phenomenon>
+		<visibility>77.8</visibility>
+		<precipitations>0</precipitations>
+		<airpressure>1023.5</airpressure>
+		<relativehumidity>89</relativehumidity>
+		<airtemperature>17.9</airtemperature>
+		<winddirection>239</winddirection>
+		<windspeed>0.8</windspeed>
+		<windspeedmax>1.4</windspeedmax>		<waterlevel>17</waterlevel>		<waterlevel_eh2000>55</waterlevel_eh2000>
+		<watertemperature>22</watertemperature>
+		<uvindex>5</uvindex>
+	</station>
+	<station>
         		<name>Kuressaare linn</name>
         		<wmocode></wmocode>
         		<longitude>22.4396138887251</longitude>
