@@ -37,7 +37,13 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.codehaus.groovy:groovy-all'
-    testCompile 'junit:junit'
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'org.projectlombok:lombok:1.18.2'
+    compile 'org.apache.commons:commons-lang3:3.8'
+    compile 'commons-io:commons-io:2.6'
+    compile 'javax.xml.bind:jaxb-api:2.3.0'
+    compile 'javax.xml.stream:stax-api:1.0-2'
+    testCompile 'junit:junit:4.12'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 

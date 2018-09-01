@@ -11,7 +11,7 @@ public class MyTest {
 	public void name() throws Exception {
 		//ByteArrayOutputStream out = new ByteArrayOutputStream();
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		HelloWorld.print(new PrintStream(out));
+		IndexController.print(new PrintStream(out));
 		String s = out.toString();
 		Assert.assertEquals("Hello", s);
 	}
