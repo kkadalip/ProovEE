@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import proov.util.WindChillUtil;
 
 @Data
 @NoArgsConstructor
@@ -21,19 +22,40 @@ public class Station {
 
 	private String name;
 	private String wmocode;
-	private Float longitude;
-	private Float latitude;
+	private Double longitude;
+	private Double latitude;
 	private String phenomenon;
-	private Float visibility;
-	private Float precipitations;
-	private Float airpressure;
-	private Float relativehumidity;
-	private Float airtemperature;
+	private Double visibility;
+	private Double precipitations;
+	private Double airpressure;
+	private Double relativehumidity;
+	private Double airtemperature;
 	private Long winddirection;
-	private Float windspeed;
-	private Float windspeedmax;
+	private Double windspeed;
+	private Double windspeedmax;
 	private Long waterlevel;
 	private Long waterlevel_eh2000;
-	private Float watertemperature;
-	private Float uvindex;
+	private Double watertemperature;
+	private Double uvindex;
+
+	private Double windChillC;
+	private Double windChillMaxC;
+	private Double windChillF;
+	private Double windChillMaxF;
+
+	public Double getWindchillC() {
+		return WindChillUtil.calculateWindChillInCelsius(airtemperature, windspeed);
+	}
+
+	public Double getWindchillMaxC() {
+		return WindChillUtil.calculateWindChillInCelsius(airtemperature, windspeedmax);
+	}
+
+	public Double getWindchillF() {
+		return WindChillUtil.calculateWindChillInFahrenheit(airtemperature, windspeed);
+	}
+
+	public Double getWindchillMaxF() {
+		return WindChillUtil.calculateWindChillInFahrenheit(airtemperature, windspeedmax);
+	}
 }

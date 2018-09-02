@@ -25,6 +25,6 @@ public class DatabaseLoader implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception {
 		Observations downloadedObservations = downloadI.downloadStuff();
-		this.repository.save(downloadedObservations); // TODO save transient before flushing
+		this.repository.save(downloadedObservations);
 	}
 }
