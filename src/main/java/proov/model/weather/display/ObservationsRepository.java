@@ -5,8 +5,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import proov.model.weather.xml.Observations;
 
-//public interface ObservationsDisplayRepository extends CrudRepository<ObservationsDisplay, Long> {
-@RepositoryRestResource(path = "/observations", collectionResourceRel = "app/observations")
+@RepositoryRestResource(path = "observations", collectionResourceRel = "observations")
 public interface ObservationsRepository extends CrudRepository<Observations, Long> {
 
 }

@@ -20,13 +20,8 @@ import proov.model.weather.xml.Station;
 
 @Slf4j
 @Service
-//@EnableConfigurationProperties(ConfigurationWeather.class)
 public class DownloadService implements DownloadI {
 	private final ConfigurationWeather confWeather;
-
-	//private ConfigurationWeather confWeather = new ConfigurationWeather(); // TODO injecting eg Autowired
-        
-	private List<Station> displayedStations = null;
 
 	@Autowired
 	public DownloadService(ConfigurationWeather confWeather) {
@@ -60,7 +55,7 @@ public class DownloadService implements DownloadI {
 	private void debug(Observations observations) {
 		if (observations != null) {
 			log.info("Observations timestamp: " + observations.getTimestamp());
-			displayedStations = observations.getStations();
+			List<Station> displayedStations = observations.getStations();
 			for (Station station : displayedStations) {
 				log.info(String.valueOf(station));
 			}

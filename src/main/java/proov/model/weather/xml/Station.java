@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Station { //StationDisplay {
+public class Station {
 	@Id
 	@GeneratedValue
 	private Long id;

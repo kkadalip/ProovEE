@@ -12,9 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Data
-@Configuration //  for Spring to be able to find this bean and make it a candidate for injection.
+@Configuration
 @PropertySource("classpath:weather.properties")
-@ConfigurationProperties //(prefix = "weather")
+@ConfigurationProperties
 public class ConfigurationWeather {
 
 	@NotNull
