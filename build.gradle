@@ -48,6 +48,7 @@ dependencies {
     compile 'commons-io:commons-io:2.6'
     compile 'javax.xml.bind:jaxb-api:2.3.0'
     compile 'javax.xml.stream:stax-api:1.0-2'
+    compile 'org.springframework.boot:spring-boot-configuration-processor'
     runtime 'com.h2database:h2'
     testCompile 'junit:junit:4.12'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
