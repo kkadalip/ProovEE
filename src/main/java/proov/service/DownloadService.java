@@ -61,7 +61,6 @@ public class DownloadService implements DownloadI {
 
 	private void debug(ObservationsDTO observations) {
 		if (observations != null) {
-			log.info("Observations timestamp: " + observations.getTimestamp());
 			List<StationDTO> displayedStations = observations.getStations();
 			for (StationDTO station : displayedStations) {
 				log.info(String.valueOf(station));

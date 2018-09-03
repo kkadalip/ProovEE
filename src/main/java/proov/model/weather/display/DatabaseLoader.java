@@ -12,14 +12,13 @@ import proov.model.weather.xml.ObservationsUI;
 @Slf4j
 public class DatabaseLoader implements CommandLineRunner {
 
-	@Autowired
-	DownloadI downloadI;
-
+	private final DownloadI downloadI;
 	private final ObservationsRepository repository;
 
 	@Autowired
-	public DatabaseLoader(ObservationsRepository repository) {
+	public DatabaseLoader(ObservationsRepository repository, DownloadI downloadI) {
 		this.repository = repository;
+		this.downloadI = downloadI;
 	}
 
 	@Override
