@@ -8,7 +8,7 @@ import proov.enums.TempEnum;
 @Slf4j
 public class WindChillUtil {
 	private WindChillUtil() {
-		throw new IllegalStateException("WindChillUtil is an utility class.");
+		throw new IllegalStateException("Utility class!");
 	}
 
 	public static Double calculateWindChillInCelsius(Double actualTempC, Double windVelocityKmH) {

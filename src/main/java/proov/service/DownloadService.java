@@ -15,8 +15,10 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import proov.configuration.ConfigurationWeather;
 import proov.interfaces.DownloadI;
-import proov.model.weather.xml.Observations;
-import proov.model.weather.xml.Station;
+import proov.model.weather.xml.ConversionUtil;
+import proov.model.weather.xml.ObservationsDTO;
+import proov.model.weather.xml.ObservationsUI;
+import proov.model.weather.xml.StationDTO;
 
 @Slf4j
 @Service
@@ -28,19 +30,19 @@ public class DownloadService implements DownloadI {
 		this.confWeather = confWeather;
 	}
 
-	public Observations downloadStuff() {
+	public ObservationsDTO downloadsObservationsDTO() {
 		log.info("starting download");
-		Observations observations = null;
+		ObservationsDTO observations = null;
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(Observations.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(ObservationsDTO.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			if (confWeather.isDownloadDevmodeOfflineSample()) {
 				String pathToFile = "src/main/resources/static/observations_offline.xml";
 				log.info("offline download url is " + pathToFile);
-				observations = (Observations) jaxbUnmarshaller.unmarshal(new File(pathToFile));
+				observations = (ObservationsDTO) jaxbUnmarshaller.unmarshal(new File(pathToFile));
 			} else {
 				log.info("online download url is " + confWeather.getDownloadURL());
-				observations = (Observations) jaxbUnmarshaller.unmarshal(new URL(confWeather.getDownloadURL()));
+				observations = (ObservationsDTO) jaxbUnmarshaller.unmarshal(new URL(confWeather.getDownloadURL()));
 			}
 		} catch (JAXBException e) {
 			log.error("jaxb failed", e);
@@ -52,11 +54,16 @@ public class DownloadService implements DownloadI {
 		return observations;
 	}
 
-	private void debug(Observations observations) {
+	@Override
+	public ObservationsUI downloadsObservationsUI() {
+		return ConversionUtil.convertDTOtoUI(downloadsObservationsDTO());
+	}
+
+	private void debug(ObservationsDTO observations) {
 		if (observations != null) {
 			log.info("Observations timestamp: " + observations.getTimestamp());
-			List<Station> displayedStations = observations.getStations();
-			for (Station station : displayedStations) {
+			List<StationDTO> displayedStations = observations.getStations();
+			for (StationDTO station : displayedStations) {
 				log.info(String.valueOf(station));
 			}
 		} else {

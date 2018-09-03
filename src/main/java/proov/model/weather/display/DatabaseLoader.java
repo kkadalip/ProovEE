@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 import proov.interfaces.DownloadI;
-import proov.model.weather.xml.Observations;
+import proov.model.weather.xml.ObservationsUI;
 
 @Component
 @Slf4j
@@ -24,7 +24,7 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		Observations downloadedObservations = downloadI.downloadStuff();
-		this.repository.save(downloadedObservations);
+		ObservationsUI obsUI = downloadI.downloadsObservationsUI();
+		this.repository.save(obsUI);
 	}
 }

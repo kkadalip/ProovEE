@@ -13,14 +13,18 @@ import proov.interfaces.DownloadI;
 @Controller
 public class IndexController {
 
-	@Autowired
-	DownloadI downloadI;
+	private final DownloadI downloadI;
 
-	@GetMapping("/")
-	public String showHomePage() { // @RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model
+	@Autowired
+	public IndexController(DownloadI downloadI) {
+		this.downloadI = downloadI;
+	}
+
+	@GetMapping("/") // @RequestMapping(value = "/")
+	public String index() { // @RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model
 		//model.addAttribute("name", name);
-		downloadI.downloadStuff();
-		return "index.html"; //"/WEB-INF/jsp/index.html";
+		downloadI.downloadsObservationsDTO();
+		return "index.html";
 	}
 
 	//	public public void main(String[] args) {

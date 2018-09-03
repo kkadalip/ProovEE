@@ -1,7 +1,10 @@
 package proov.interfaces;
 
-import proov.model.weather.xml.Observations;
+import proov.model.weather.xml.ObservationsDTO;
+import proov.model.weather.xml.ObservationsUI;
 
 public interface DownloadI {
-	Observations downloadStuff();
+	ObservationsDTO downloadsObservationsDTO();
+
+	ObservationsUI downloadsObservationsUI();
 }
