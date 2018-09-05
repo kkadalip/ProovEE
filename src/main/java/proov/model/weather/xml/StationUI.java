@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import proov.util.WindChillUtil;
 
 @Data
 @NoArgsConstructor
@@ -19,6 +18,7 @@ public class StationUI {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
 	private String name;
 	private String wmoCode;
 	private Double longitude;
@@ -40,20 +40,4 @@ public class StationUI {
 	private Double windChillMaxC;
 	private Double windChillF;
 	private Double windChillMaxF;
-
-	public Double getWindchillC() {
-		return WindChillUtil.calculateWindChillInCelsius(airTemperature, windSpeed);
-	}
-
-	public Double getWindchillMaxC() {
-		return WindChillUtil.calculateWindChillInCelsius(airTemperature, windSpeed);
-	}
-
-	public Double getWindchillF() {
-		return WindChillUtil.calculateWindChillInFahrenheit(airTemperature, windSpeed);
-	}
-
-	public Double getWindchillMaxF() {
-		return WindChillUtil.calculateWindChillInFahrenheit(airTemperature, windSpeed);
-	}
 }

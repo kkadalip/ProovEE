@@ -3,7 +3,7 @@
             <observations timestamp="1535821209">
 	<station>
 		<name>Näidis linn kõigi väärtustega</name>
-		<wmocode></wmocode>
+		<wmocode>123</wmocode>
 		<longitude>22.4396138887251</longitude>
 		<latitude>58.2808499997148</latitude>
 		<phenomenon>Sunny</phenomenon>

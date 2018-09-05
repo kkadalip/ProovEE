@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
+import proov.util.WindChillUtil;
 
 @Slf4j
 public class ConversionUtil {
@@ -17,7 +18,7 @@ public class ConversionUtil {
 			return null;
 		}
 		ObservationsUI obsUI = new ObservationsUI();
-		//obsUI.setTimestamp(o.getTimestamp());
+		obsUI.setTimestamp(o.getTimestamp());
 		obsUI.setStations(convertStationDTOtoUI(o.getStations()));
 		return obsUI;
 	}
@@ -35,7 +36,7 @@ public class ConversionUtil {
 			sUI.setPrecipitations(sDTO.getVisibility());
 			sUI.setAirPressure(sDTO.getAirPressure());
 			sUI.setRelativeHumidity(sDTO.getRelativeHumidity());
-			sUI.setAirPressure(sDTO.getAirPressure());
+			sUI.setAirTemperature(sDTO.getAirTemperature());
 			sUI.setWindDirection(sDTO.getWindDirection());
 			sUI.setWindSpeed(sDTO.getWindSpeed());
 			sUI.setWindSpeedMax(sDTO.getWindSpeedMax());
@@ -43,6 +44,10 @@ public class ConversionUtil {
 			sUI.setWaterLevelEh2000(sDTO.getWaterLevelEh2000());
 			sUI.setWaterTemperature(sDTO.getWaterTemperature());
 			sUI.setUvIndex(sDTO.getUvIndex());
+			sUI.setWindChillC(WindChillUtil.calculateWindChillInCelsius(sDTO.getAirTemperature(), sDTO.getWindSpeed()));
+			sUI.setWindChillF(WindChillUtil.calculateWindChillInFahrenheit(sDTO.getAirTemperature(), sDTO.getWindSpeed()));
+			sUI.setWindChillMaxC(WindChillUtil.calculateWindChillInCelsius(sDTO.getAirTemperature(), sDTO.getWindSpeedMax()));
+			sUI.setWindChillMaxF(WindChillUtil.calculateWindChillInFahrenheit(sDTO.getAirTemperature(), sDTO.getWindSpeedMax()));
 			stationUIs.add(sUI);
 		}
 		return stationUIs;

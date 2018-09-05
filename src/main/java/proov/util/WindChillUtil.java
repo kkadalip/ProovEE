@@ -1,5 +1,7 @@
 package proov.util;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.EnumSet;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,9 +30,9 @@ public class WindChillUtil {
 			Double windVelPow = Math.pow(windVelocityKmH, 0.16);
 			Double tempMultiplied = 0.6215 * temp;
 			if (TempEnum.C.equals(tempEnum)) {
-				return 13.12 + tempMultiplied - 11.37 * windVelPow + 0.3965 * temp * windVelPow;
+				return round(13.12 + tempMultiplied - 11.37 * windVelPow + 0.3965 * temp * windVelPow);
 			} else if (TempEnum.F.equals(tempEnum)) {
-				return 35.74 + tempMultiplied - 35.75 * windVelPow + 0.4275 * temp * windVelPow;
+				return round(35.74 + tempMultiplied - 35.75 * windVelPow + 0.4275 * temp * windVelPow);
 			} else {
 				log.error("Temperature scale not applicable. " + tempEnum);
 			}
@@ -41,5 +43,19 @@ public class WindChillUtil {
 		return null;
 	}
 
+	private static Double round(Double value) {
+		return round(value, 2);
+	}
 
+	private static Double round(Double value, int places) {
+		if (value == null) {
+			return null;
+		}
+		if (places < 0) {
+			throw new IllegalArgumentException();
+		}
+		BigDecimal bd = BigDecimal.valueOf(value);
+		bd = bd.setScale(places, RoundingMode.HALF_UP);
+		return bd.doubleValue();
+	}
 }
