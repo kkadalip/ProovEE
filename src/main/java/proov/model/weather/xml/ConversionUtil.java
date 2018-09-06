@@ -26,6 +26,11 @@ public class ConversionUtil {
 	private static List<StationUI> convertStationDTOtoUI(List<StationDTO> stationDTOs) {
 		List<StationUI> stationUIs = new ArrayList<>();
 		for (StationDTO sDTO : stationDTOs) {
+			Double windChillC = WindChillUtil.calcWindChillInC(sDTO.getAirTemperature(), sDTO.getWindSpeed());
+			Double windChillF = WindChillUtil.calcWindChillInF(sDTO.getAirTemperature(), sDTO.getWindSpeed());
+			Double windChillMaxC = WindChillUtil.calcWindChillInC(sDTO.getAirTemperature(), sDTO.getWindSpeedMax());
+			Double windChillMaxF = WindChillUtil.calcWindChillInF(sDTO.getAirTemperature(), sDTO.getWindSpeedMax());
+
 			StationUI sUI = new StationUI();
 			sUI.setName(sDTO.getName());
 			sUI.setWmoCode(sDTO.getWmoCode());
@@ -44,10 +49,10 @@ public class ConversionUtil {
 			sUI.setWaterLevelEh2000(sDTO.getWaterLevelEh2000());
 			sUI.setWaterTemperature(sDTO.getWaterTemperature());
 			sUI.setUvIndex(sDTO.getUvIndex());
-			sUI.setWindChillC(WindChillUtil.calculateWindChillInCelsius(sDTO.getAirTemperature(), sDTO.getWindSpeed()));
-			sUI.setWindChillF(WindChillUtil.calculateWindChillInFahrenheit(sDTO.getAirTemperature(), sDTO.getWindSpeed()));
-			sUI.setWindChillMaxC(WindChillUtil.calculateWindChillInCelsius(sDTO.getAirTemperature(), sDTO.getWindSpeedMax()));
-			sUI.setWindChillMaxF(WindChillUtil.calculateWindChillInFahrenheit(sDTO.getAirTemperature(), sDTO.getWindSpeedMax()));
+			sUI.setWindChillC(windChillC);
+			sUI.setWindChillF(windChillF);
+			sUI.setWindChillMaxC(windChillMaxC);
+			sUI.setWindChillMaxF(windChillMaxF);
 			stationUIs.add(sUI);
 		}
 		return stationUIs;
