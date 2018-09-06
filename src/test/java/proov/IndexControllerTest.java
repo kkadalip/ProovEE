@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -26,8 +27,7 @@ public class IndexControllerTest {
 
 	@Autowired
 	private TestRestTemplate template;
-
-
+	
 	@Before
 	public void setUp() throws Exception {
 		this.base = new URL("http://localhost:" + port + "/");
@@ -40,6 +40,7 @@ public class IndexControllerTest {
 	@Test
 	public void index() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+		Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCodeValue());
 		Assert.assertThat(response.getBody(), CoreMatchers.containsString("Weather stations"));
 		Assert.assertThat(response.getBody(), CoreMatchers.containsString("API"));
 	}

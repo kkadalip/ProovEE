@@ -50,7 +50,7 @@ public class UnitUtilTest {
 	}
 
 	@Test
-	public void round1() {
+	public void roundToDecimalPlaces() {
 		assertEquals("Round to 3 decimal places", UnitUtil.round(-17.77777777777778, 3), new Double(-17.778));
 		assertEquals("Round to 0 decimal places", UnitUtil.round(-17.77777777777778, 0), new Double(-18));
 		assertEquals("Round to 1 decimal places", UnitUtil.round(-17.77777777777778, 1), new Double(-17.8));
