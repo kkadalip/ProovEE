@@ -6,24 +6,28 @@ import java.math.RoundingMode;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class UnitUtil {
-	public static Double msToKmh(Double ms) {
+class UnitUtil {
+	private UnitUtil() {
+		throw new IllegalStateException("Utility class!");
+	}
+
+	static Double msToKmh(Double ms) {
 		return ms != null ? ms * 3.6 : null;
 	}
 
-	public static Double kmhToMs(Double kmh) {
+	static Double kmhToMs(Double kmh) {
 		return kmh != null ? kmh / 3.6 : null;
 	}
 
-	public static Double msToMph(Double ms) {
+	static Double msToMph(Double ms) {
 		return ms != null ? ms * (3600 / 1609.3) : null;
 	}
 
-	public static Double round(Double value) {
+	static Double round(Double value) {
 		return round(value, 2);
 	}
 
-	public static Double round(Double value, int places) {
+	static Double round(Double value, int places) {
 		if (value == null) {
 			return null;
 		}
@@ -35,11 +39,11 @@ public class UnitUtil {
 		return bd.doubleValue();
 	}
 
-	public static Double celsiusToFahrenheit(Double celsius) {
+	static Double celsiusToFahrenheit(Double celsius) {
 		return celsius != null ? (9.0 / 5.0) * celsius + 32 : null;
 	}
 
-	public static Double fahrenheitToCelsius(Double fahrenheit) {
+	static Double fahrenheitToCelsius(Double fahrenheit) {
 		return fahrenheit != null ? (5.0 / 9.0) * (fahrenheit - 32) : null;
 	}
 }
