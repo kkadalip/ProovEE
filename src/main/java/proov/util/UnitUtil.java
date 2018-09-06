@@ -28,7 +28,7 @@ public class UnitUtil {
 			return null;
 		}
 		if (places < 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Can not round to negative number of decimal places.");
 		}
 		BigDecimal bd = BigDecimal.valueOf(value);
 		bd = bd.setScale(places, RoundingMode.HALF_UP);
