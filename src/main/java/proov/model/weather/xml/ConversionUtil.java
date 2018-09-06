@@ -38,7 +38,7 @@ public class ConversionUtil {
 			sUI.setLatitude(sDTO.getLatitude());
 			sUI.setPhenomenon(sDTO.getPhenomenon());
 			sUI.setVisibility(sDTO.getVisibility());
-			sUI.setPrecipitations(sDTO.getVisibility());
+			sUI.setPrecipitations(sDTO.getPrecipitations());
 			sUI.setAirPressure(sDTO.getAirPressure());
 			sUI.setRelativeHumidity(sDTO.getRelativeHumidity());
 			sUI.setAirTemperature(sDTO.getAirTemperature());
