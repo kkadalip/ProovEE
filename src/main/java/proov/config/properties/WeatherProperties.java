@@ -1,4 +1,4 @@
-package proov.configuration;
+package proov.config.properties;
 
 import javax.validation.constraints.NotNull;
 
@@ -15,11 +15,11 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @PropertySource("classpath:weather.properties")
 @ConfigurationProperties
-public class ConfigurationWeather {
+public class WeatherProperties {
 
 	@NotNull
 	@Value("${download.url}")
-	private String downloadURL;
+	private String downloadUrl;
 
 	@Value("${download.devmode.offline-sample}")
 	private boolean downloadOfflineSampleInstead;

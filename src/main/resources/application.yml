@@ -1,0 +1,17 @@
+# swagger
+security:
+  testvalue: 123
+  oauth2:
+    client:
+      clientId: proovEE
+      # DO NOT store password here; add password as environment variable
+      clientSecret: 
+      #accessTokenUri:
+      #userAuthorizationUri:
+      #tokenName: oauth_token
+      #authenticationScheme: query
+      #clientAuthenticationScheme: form
+    resource:
+      tokenInfoUri:
+      userInfoUri:
+      token:

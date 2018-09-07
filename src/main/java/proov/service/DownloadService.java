@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import proov.configuration.ConfigurationWeather;
+import proov.config.properties.WeatherProperties;
 import proov.interfaces.DownloadI;
 import proov.model.weather.xml.ConversionUtil;
 import proov.model.weather.xml.ObservationsDTO;
@@ -23,11 +23,11 @@ import proov.model.weather.xml.StationDTO;
 @Slf4j
 @Service
 public class DownloadService implements DownloadI {
-	private final ConfigurationWeather confWeather;
+	private final WeatherProperties weatherProperties;
 
 	@Autowired
-	public DownloadService(ConfigurationWeather confWeather) {
-		this.confWeather = confWeather;
+	public DownloadService(WeatherProperties weatherProperties) {
+		this.weatherProperties = weatherProperties;
 	}
 
 	public ObservationsDTO downloadsObservationsDTO() {
@@ -36,13 +36,13 @@ public class DownloadService implements DownloadI {
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(ObservationsDTO.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			if (confWeather.isDownloadDevmodeOfflineSample()) {
+			if (weatherProperties.isDownloadDevmodeOfflineSample()) {
 				String pathToFile = "src/main/resources/static/observations_offline.xml";
 				log.info("offline download url is " + pathToFile);
 				observations = (ObservationsDTO) jaxbUnmarshaller.unmarshal(new File(pathToFile));
 			} else {
-				log.info("online download url is " + confWeather.getDownloadURL());
-				observations = (ObservationsDTO) jaxbUnmarshaller.unmarshal(new URL(confWeather.getDownloadURL()));
+				log.info("online download url is " + weatherProperties.getDownloadUrl());
+				observations = (ObservationsDTO) jaxbUnmarshaller.unmarshal(new URL(weatherProperties.getDownloadUrl()));
 			}
 		} catch (JAXBException e) {
 			log.error("jaxb failed", e);
