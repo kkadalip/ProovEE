@@ -30,7 +30,7 @@ public class DownloadService implements DownloadI {
 		this.weatherProperties = weatherProperties;
 	}
 
-	public ObservationsDTO downloadsObservationsDTO() {
+	public ObservationsDTO downloadObservationsDTO() {
 		log.info("starting download");
 		ObservationsDTO observations = null;
 		try {
@@ -55,8 +55,8 @@ public class DownloadService implements DownloadI {
 	}
 
 	@Override
-	public ObservationsUI downloadsObservationsUI() {
-		return ConversionUtil.convertDTOtoUI(downloadsObservationsDTO());
+	public ObservationsUI downloadObservationsUI() {
+		return ConversionUtil.convertDTOtoUI(downloadObservationsDTO());
 	}
 
 	private void debug(ObservationsDTO observations) {

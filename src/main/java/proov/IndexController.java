@@ -20,7 +20,7 @@ public class IndexController {
 
 	@GetMapping("/")
 	public String index() {
-		downloadI.downloadsObservationsDTO();
+		//downloadI.downloadObservationsDTO();
 		return "index.html";
 	}
 }

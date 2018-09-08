@@ -23,7 +23,7 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		ObservationsUI obsUI = downloadI.downloadsObservationsUI();
+		ObservationsUI obsUI = downloadI.downloadObservationsUI();
 		this.repository.save(obsUI);
 	}
 }

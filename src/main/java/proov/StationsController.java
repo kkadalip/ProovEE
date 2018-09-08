@@ -23,7 +23,12 @@ public class StationsController {
 	// TODO .properties value:
 	@CrossOrigin//(origins = "http://localhost:3000")
 	@GetMapping("/stations")
-	public List<ObservationsUI> allStations() {
+	public List<ObservationsUI> getAllStations() {
+		return new ArrayList<>(observationsRepository.findAll());
+	}
+
+	@GetMapping("/stationsTest")
+	public List<ObservationsUI> getAllStationsTestData() {
 		return new ArrayList<>(observationsRepository.findAll());
 	}
 }
