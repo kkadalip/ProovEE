@@ -1,0 +1,96 @@
+* {
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: rgb(239, 239, 239);
+    color: rgb(0, 0, 0);
+}
+
+.unselectable {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+}
+
+.title-big {
+    background-color: rgb(61, 61, 61);
+    color: white;
+    padding: 20px 10px;
+    margin: 0 0 34px 0;
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+.list-of-links {
+    font-weight: bold;
+    text-align: left;
+}
+
+.floating-box-container {
+    text-align: center;
+}
+
+.floating-box {
+    display: inline-block;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#floating-box-top {
+    margin: 20px 10px 5px 10px;
+    font-size: 22px;
+}
+
+#floating-box-top p {
+    margin: 10px;
+}
+
+#floating-box-main {
+    padding: 0 0 5px 0;
+    margin: 30px 10px 5px 10px;
+}
+
+/*button*/
+.buttonWrapper {
+    margin: 10px 20px;
+}
+
+.gradientButton {
+    color: rgb(255, 255, 255);
+    width: 100%;
+    height: 35px;
+    display: inline-block;
+    margin: 0 5px 0 0;
+    padding: 2px;
+    font-size: 18px;
+    appearance: none;
+    background: rgb(100, 100, 100) -webkit-linear-gradient(top, rgb(180, 180, 180), rgb(125, 125, 125));
+    box-shadow: none;
+    border: none;
+    border-radius: 2px;
+}
+
+.gradientButton:hover {
+    box-shadow: 0 2px 3px 1px rgb(150, 150, 150);
+    background: rgb(100, 100, 100) -webkit-linear-gradient(top, rgb(190, 190, 190), rgb(135, 135, 135));
+}
+
+.gradientButton:active, .gradientButton:focus {
+    border: solid 1px rgb(110, 110, 110);
+    box-shadow: inset 0 5px 30px rgb(71, 71, 71);
+    color: rgb(210, 210, 210);
+    background-image: -webkit-linear-gradient(top, rgb(200, 200, 200), rgb(145, 145, 145));
+}
+
+.gradientButton:focus {
+    outline: none;
+}

@@ -3,15 +3,31 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title>Weather stations</title>
-	<link rel="stylesheet" href="main.css"/>
+	<link rel="stylesheet" href="../main.css"/>
+	<script type="text/javascript" src="../main.js"></script>
 </head>
 <body>
-<h1>Weather stations API:</h1>
-
-<p>API root <a href="/api">here</a></p>
-<p>Observations <a href="/api/observations">here</a></p>
-<p>Swagger UI <a href="/swagger-ui.html">here</a></p>
-<p>Swagger API docs <a href="/v2/api-docs">here</a></p>
-<p>Swagger resources <a href="/swagger-resources">here</a></p>
+<div class="floating-box-container">
+	<div id="floating-box-main" class="floating-box">
+		<header>
+			<p class="unselectable title-big">Weather stations improved API</p>
+		</header>
+		<div class="buttonWrapper">
+			<input class="gradientButton" type="submit" value="API root" onclick="location.href='/api'">
+		</div>
+		<div class="buttonWrapper">
+			<input class="gradientButton" type="submit" value="Observations" onclick="location.href='/api/observations'">
+		</div>
+		<div class="buttonWrapper">
+			<input class="gradientButton" type="submit" value="Swagger UI" onclick="location.href='/swagger-ui.html'">
+		</div>
+		<div class="buttonWrapper">
+			<input class="gradientButton" type="submit" value="Swagger API docs" onclick="location.href='/v2/api-docs'">
+		</div>
+		<div class="buttonWrapper">
+			<input class="gradientButton" type="submit" value="Swagger resources" onclick="location.href='/swagger-resources'">
+		</div>
+	</div>
+</div>
 </body>
 </html>

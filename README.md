@@ -1,5 +1,10 @@
 #  Improved REST API for Estonian Weather data
 
+##### Source data and logic
+* http://www.ilmateenistus.ee/teenused/ilmainfo/eesti-vaatlusandmed-xml/
+* http://www.ilmateenistus.ee/ilma_andmed/xml/observations.php
+* https://www.freemathhelp.com/wind-chill.html
+
 ## Building the application
     $ gradle build
 
@@ -39,6 +44,10 @@
 #### Frameworks in use:
 * Spring Boot - https://spring.io/projects/spring-boot
 * JAXB API for XML parsing - https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api/
+
+#### Helpful guides:
+* Setting up Spring Boot - https://spring.io/guides/gs/spring-boot/
+
 ###### REST API:
 * Swagger - https://swagger.io/
 * Swagger UI - https://swagger.io/tools/swagger-ui/
