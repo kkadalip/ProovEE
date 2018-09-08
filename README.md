@@ -18,14 +18,15 @@
 	server.port=    (port number to run the application on)
     security.oauth2.client.clientSecret=TODO
     
-### Configuration files
-    application-dev.yml
-    application-test.yml
-    application-live.yml
-    
+### Configuration files    
     All environments:
-    application.properties
-    application.yml
+    config/application.properties
+    config/application.yml
+
+	Logging:
+	config/log/log4j2.xml
+	
+	(TODO separate files for -local, -dev, -test, -live environments)
     
 ### Application API docs (Swagger 2)
 	http://localhost:8090/swagger-ui.html
@@ -34,3 +35,10 @@
 
 #### Java trust store certificates
     Currently not needed.
+    
+#### Frameworks in use:
+* Spring Boot - https://spring.io/projects/spring-boot
+* JAXB API for XML parsing - https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api/
+###### REST API:
+* Swagger - https://swagger.io/
+* Swagger UI - https://swagger.io/tools/swagger-ui/

@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Data
 @Configuration
-@PropertySource("classpath:weather.properties")
+@PropertySource("classpath:config/weather.properties")
 @ConfigurationProperties
 public class WeatherProperties {
 

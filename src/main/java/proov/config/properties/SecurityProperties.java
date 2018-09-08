@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Data
 @Configuration
-@PropertySource("classpath:application.yml")
+@PropertySource("classpath:config/application.yml")
 @ConfigurationProperties(prefix = "security")
 public class SecurityProperties {
 	private String testvalue;
