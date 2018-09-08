@@ -41,7 +41,7 @@ public class IndexControllerTest {
 	public void index() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCodeValue());
-		Assert.assertThat(response.getBody(), CoreMatchers.containsString("Weather stations"));
+		Assert.assertThat(response.getBody(), CoreMatchers.containsString("weather stations"));
 		Assert.assertThat(response.getBody(), CoreMatchers.containsString("API"));
 	}
 }

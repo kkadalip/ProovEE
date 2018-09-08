@@ -42,6 +42,8 @@ public class DownloadService implements DownloadI {
 				observations = (ObservationsDTO) jaxbUnmarshaller.unmarshal(new File(pathToFile));
 			} else {
 				log.info("online download url is " + weatherProperties.getDownloadUrl());
+				// TODO only download if time since last download is >1 minutes. (After first download start 1 hour intervals and only retry if didn't get a newer result). 
+				
 				observations = (ObservationsDTO) jaxbUnmarshaller.unmarshal(new URL(weatherProperties.getDownloadUrl()));
 			}
 		} catch (JAXBException e) {
