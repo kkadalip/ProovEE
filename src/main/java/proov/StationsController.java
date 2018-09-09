@@ -27,6 +27,7 @@ public class StationsController {
 		return new ArrayList<>(observationsRepository.findAll());
 	}
 
+	// TODO
 	@GetMapping("/stationsTest")
 	public List<ObservationsUI> getAllStationsTestData() {
 		return new ArrayList<>(observationsRepository.findAll());

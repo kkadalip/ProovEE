@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import proov.model.weather.xml.ObservationsUI;
 
-@CrossOrigin //(origins = "http://localhost:3000")
+@CrossOrigin
 @Repository
 @RepositoryRestResource(path = "observations", collectionResourceRel = "observations")
-// JpaRepository extends PagingAndSortingRepository which in turn extends CrudRepository.
 public interface ObservationsRepository extends JpaRepository<ObservationsUI, Long> {
 
 }

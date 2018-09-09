@@ -20,7 +20,7 @@ public class WeatherPropertiesTest {
 
 	@Test
 	public void downloadUrlExists() {
-		Assert.assertNotNull("Download URL has a value", weatherProperties.getDownloadUrl());
+		Assert.assertNotNull("Download URL must have a value", weatherProperties.getDownloadUrl());
 	}
 
 	@Test

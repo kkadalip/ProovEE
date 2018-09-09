@@ -32,15 +32,15 @@ public class StationDTO {
 	@XmlElement(name = "airtemperature")
 	private Double airTemperature;
 	@XmlElement(name = "winddirection")
-	private Long windDirection;
+	private Double windDirection;
 	@XmlElement(name = "windspeed")
 	private Double windSpeed;
 	@XmlElement(name = "windspeedmax")
 	private Double windSpeedMax;
 	@XmlElement(name = "waterlevel")
-	private Long waterLevel;
+	private Double waterLevel;
 	@XmlElement(name = "waterlevel_eh2000")
-	private Long waterLevelEh2000;
+	private Double waterLevelEh2000;
 	@XmlElement(name = "watertemperature")
 	private Double waterTemperature;
 	@XmlElement(name = "uvindex")

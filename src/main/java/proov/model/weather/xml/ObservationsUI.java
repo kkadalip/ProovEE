@@ -8,8 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
+import proov.model.weather.xml.Statistics.ObservationStats;
 
 @Data
 @Entity
@@ -21,4 +23,7 @@ public class ObservationsUI {
 	@OneToMany(targetEntity = StationUI.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<StationUI> stations;
 	private Long timestamp;
+
+	@OneToOne(targetEntity = ObservationStats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private ObservationStats observationStatistics;
 }

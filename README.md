@@ -1,21 +1,21 @@
 #  Improved REST API for Estonian Weather data
 
-##### Source data and logic
-* http://www.ilmateenistus.ee/teenused/ilmainfo/eesti-vaatlusandmed-xml/
-* http://www.ilmateenistus.ee/ilma_andmed/xml/observations.php
-* https://www.freemathhelp.com/wind-chill.html
-
-## Building the application
-    $ gradle build
-
-## Starting the application
+## 1) Building the application
 	Open command prompt, navigate to project root, for example:
 	$ cd C:\Users\your.name\Desktop\ProovEE
-	And then run in command prompt:
+	
+	Run in command prompt:
+    $ gradle build
+    
+## 2) Starting the application
+	Run in command prompt:
 	$ gradle bootRun
+
 	Open http://localhost:8090/
 
-## Building and running the application project with variables:	
+####  Building and starting with custom variables instead:	
+	$ gradlew bootRun -Pargs=--port=8093
+	OR
 	$ gradlew build && java -jar build/libs/proov-ee-1.0.jar --mode=dev --port=8091
 ######	NB! Port 8090 will be used if "--port=" variable is not provided
 ### Environment variables
@@ -51,3 +51,8 @@
 ###### REST API:
 * Swagger - https://swagger.io/
 * Swagger UI - https://swagger.io/tools/swagger-ui/
+
+##### Source data and logic
+* http://www.ilmateenistus.ee/teenused/ilmainfo/eesti-vaatlusandmed-xml/
+* http://www.ilmateenistus.ee/ilma_andmed/xml/observations.php
+* https://www.freemathhelp.com/wind-chill.html

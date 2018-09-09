@@ -1,17 +1,23 @@
 package proov.enums;
 
 public enum TempEnum {
-	C("Celsius"),
-	F("Fahrenheit"),
-	K("Kelvin");
+	C("Celsius", "°C"),
+	F("Fahrenheit", "F"),
+	K("Kelvin", "K");
 
-	private final String code;
-	
-	public String getCode() {
-		return code != null ? code : "";
+	private final String name;
+	private final String symbol;
+
+	TempEnum(String name, String symbol) {
+		this.name = name;
+		this.symbol = symbol;
 	}
 
-	TempEnum(String code) {
-		this.code = code;
+	public String getName() {
+		return name != null ? name : "";
+	}
+
+	public String getSymbol() {
+		return symbol != null ? symbol : "";
 	}
 }
