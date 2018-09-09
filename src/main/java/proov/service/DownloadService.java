@@ -35,8 +35,12 @@ public class DownloadService implements DownloadI {
 	public DownloadService(WeatherProperties weatherProperties) {
 		this.weatherProperties = weatherProperties;
 	}
-	
+
 	public ObservationsDTO downloadObservationsDTO() {
+		return downloadObservationsDTO("temp.xml");
+	}
+
+	private ObservationsDTO downloadObservationsDTO(String fileName) {
 		log.info("starting download");
 		ObservationsDTO observations = null;
 		try {
@@ -53,7 +57,7 @@ public class DownloadService implements DownloadI {
 				String downloadURL = weatherProperties.getDownloadUrl();
 				URL url = new URL(downloadURL);
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-				String targetPath = "src/main/resources/static/observations/result4.xml";
+				String targetPath = "src/main/resources/static/observations/" + fileName;
 				File targetFile = new File(targetPath);
 				try {
 					initHttpConnection(conn);

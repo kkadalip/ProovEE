@@ -51,6 +51,7 @@
 * Setting up Spring Boot - https://spring.io/guides/gs/spring-boot/
 * Serving web content - https://spring.io/guides/gs/serving-web-content/
 * Server side testing - https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html
+* Task scheduling - https://www.callicoder.com/spring-boot-task-scheduling-with-scheduled-annotation/
 
 ###### REST API:
 * Swagger - https://swagger.io/

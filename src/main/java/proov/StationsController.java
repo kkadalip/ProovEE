@@ -23,7 +23,6 @@ public class StationsController {
 	@CrossOrigin
 	@GetMapping("/stations")
 	public List<ObservationsUI> getAllStations() {
-		// TODO scheduler to update in-memory H2 database
 		return new ArrayList<>(observationsRepository.findAll());
 	}
 }
