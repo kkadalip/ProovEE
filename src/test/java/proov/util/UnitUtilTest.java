@@ -10,14 +10,6 @@ import org.junit.Test;
 
 public class UnitUtilTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void msToKmh() {
 		assertEquals("100m/s to 360km/h", UnitUtil.msToKmh(100d), new Double(360));

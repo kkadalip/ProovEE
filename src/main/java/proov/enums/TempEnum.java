@@ -2,8 +2,7 @@ package proov.enums;
 
 public enum TempEnum {
 	C("Celsius", "°C"),
-	F("Fahrenheit", "F"),
-	K("Kelvin", "K");
+	F("Fahrenheit", "F");
 
 	private final String name;
 	private final String symbol;

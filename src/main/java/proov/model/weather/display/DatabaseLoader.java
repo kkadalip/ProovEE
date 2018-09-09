@@ -22,8 +22,12 @@ public class DatabaseLoader implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... strings) throws Exception {
+	public void run(String... strings) {
 		ObservationsUI obsUI = downloadI.downloadObservationsUI();
+		if (obsUI == null) {
+			log.error("downloader observations UI is null, can not save");
+			return;
+		}
 		this.repository.save(obsUI);
 	}
 }

@@ -1,5 +1,8 @@
 #  Improved REST API for Estonian Weather data
 
+###### To run tests separately:
+	$ gradle test
+	
 ## 1) Building the application
 	Open command prompt, navigate to project root, for example:
 	$ cd C:\Users\your.name\Desktop\ProovEE
@@ -10,7 +13,6 @@
 ## 2) Starting the application
 	Run in command prompt:
 	$ gradle bootRun
-
 	Open http://localhost:8090/
 
 ####  Building and starting with custom variables instead:	
@@ -18,10 +20,12 @@
 	OR
 	$ gradlew build && java -jar build/libs/proov-ee-1.0.jar --mode=dev --port=8091
 ######	NB! Port 8090 will be used if "--port=" variable is not provided
-### Environment variables
-	mode=dev (dev, test, live)
-	server.port=    (port number to run the application on)
-    security.oauth2.client.clientSecret=TODO
+
+## Building and launching an executable JAR (to \build\libs folder)
+	$ cd C:\Users\your.name\Desktop\ProovEE
+	$ gradle bootJar
+	$ cd build\libs
+	$ java -jar proov-ee-1.0.jar
     
 ### Configuration files    
     All environments:
@@ -30,8 +34,6 @@
 
 	Logging:
 	config/log/log4j2.xml
-	
-	(TODO separate files for -local, -dev, -test, -live environments)
     
 ### Application API docs (Swagger 2)
 	http://localhost:8090/swagger-ui.html
@@ -47,6 +49,8 @@
 
 #### Helpful guides:
 * Setting up Spring Boot - https://spring.io/guides/gs/spring-boot/
+* Serving web content - https://spring.io/guides/gs/serving-web-content/
+* Server side testing - https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html
 
 ###### REST API:
 * Swagger - https://swagger.io/

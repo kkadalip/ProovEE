@@ -8,32 +8,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-// https://spring.io/guides/gs/serving-web-content/
-@Configuration // tags the class as a source of bean definitions for the application context.
-// https://stackoverflow.com/questions/27381781/java-spring-boot-how-to-map-my-app-root-to-index-html
-// //@EnableAutoConfiguration // tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings.
-// @EnableWebMvc // for a Spring MVC app, but Spring Boot adds it automatically when it sees spring-webmvc on the classpath. This flags the application as a web application and activates key behaviors such as setting up a DispatcherServlet.
-//@ComponentScan // tells Spring to look for other components, configurations, and services in the proov package, allowing it to find the controllers.
+@Configuration
 @SpringBootApplication
+@EnableScheduling
 public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
-//	@Bean
-//	public InternalResourceViewResolver defaultViewResolver() {
-//		return new InternalResourceViewResolver();
-//	}
-
-//	@Override
-//	public void addViewControllers(ViewControllerRegistry registry) {
-//		registry.addViewController("/").setViewName("forward:/index.html");
-//	}
 
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {

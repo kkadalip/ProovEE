@@ -20,16 +20,10 @@ public class StationsController {
 		this.observationsRepository = observationsRepository;
 	}
 
-	// TODO .properties value:
-	@CrossOrigin//(origins = "http://localhost:3000")
+	@CrossOrigin
 	@GetMapping("/stations")
 	public List<ObservationsUI> getAllStations() {
-		return new ArrayList<>(observationsRepository.findAll());
-	}
-
-	// TODO
-	@GetMapping("/stationsTest")
-	public List<ObservationsUI> getAllStationsTestData() {
+		// TODO scheduler to update in-memory H2 database
 		return new ArrayList<>(observationsRepository.findAll());
 	}
 }

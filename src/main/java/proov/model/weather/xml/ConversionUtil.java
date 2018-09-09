@@ -93,39 +93,17 @@ public class ConversionUtil {
 		List<Double> windChillFs = new ArrayList<>();
 		List<Double> windChillMaxFs = new ArrayList<>();
 		for (StationUI s : stationUIs) {
-			if (s.getVisibility() != null) {
-				visibilities.add(s.getVisibility());
-			}
-			if (s.getAirPressure() != null) {
-				airPressures.add(s.getAirPressure());
-			}
-			if (s.getRelativeHumidity() != null) {
-				humidities.add(s.getRelativeHumidity());
-			}
-			if (s.getAirTemperature() != null) {
-				airtemps.add(s.getAirTemperature());
-			}
-			if (s.getWindDirection() != null) {
-				windDirections.add(s.getWindDirection());
-			}
-			if (s.getWindSpeed() != null) {
-				windSpeeds.add(s.getWindSpeed());
-			}
-			if (s.getWaterLevel() != null) {
-				waterLevels.add(s.getWaterLevel());
-			}
-			if (s.getWindChillC() != null) {
-				windChillCs.add(s.getWindChillC());
-			}
-			if (windChillMaxCs != null) {
-				windChillMaxCs.add(s.getWindChillMaxC());
-			}
-			if (windChillFs != null) {
-				windChillFs.add(s.getWindChillF());
-			}
-			if (windChillMaxFs != null) {
-				windChillMaxFs.add(s.getWindChillMaxF());
-			}
+			add(visibilities, s.getVisibility());
+			add(airPressures, s.getAirPressure());
+			add(humidities, s.getRelativeHumidity());
+			add(airtemps, s.getAirTemperature());
+			add(windDirections, s.getWindDirection());
+			add(windSpeeds, s.getWindSpeed());
+			add(waterLevels, s.getWaterLevel());
+			add(windChillCs, s.getWindChillC());
+			add(windChillMaxCs, s.getWindChillMaxC());
+			add(windChillFs, s.getWindChillF());
+			add(windChillMaxFs, s.getWindChillMaxF());
 		}
 		return ObservationStats.builder()
 				.visibility(getStatsD(visibilities))
@@ -142,15 +120,22 @@ public class ConversionUtil {
 				.build();
 	}
 
+	private static void add(List<Double> list, Double value) {
+		if (value == null) {
+			return;
+		}
+		list.add(value);
+	}
+
 	private static Stats getStatsD(List<Double> data) {
 		return data != null ? convertToStatsD(getSummaryStatsD(data)) : null;
 	}
 
 	private static DoubleSummaryStatistics getSummaryStatsD(List<Double> data) {
+		if (data == null) {
+			return null;
+		}
 		try {
-			if (data == null) {
-				return null;
-			}
 			return data.stream().filter(Objects::nonNull).mapToDouble(x -> x).summaryStatistics();
 		} catch (NullPointerException ex) {
 			log.error("getSummaryStatsD NullPointerException", ex);

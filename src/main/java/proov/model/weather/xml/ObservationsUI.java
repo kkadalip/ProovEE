@@ -26,7 +26,7 @@ public class ObservationsUI {
 
 	@OneToOne(targetEntity = ObservationUnits.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private ObservationUnits units;
-	
+
 	@OneToOne(targetEntity = ObservationStats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private ObservationStats statistics;
 }

@@ -5,8 +5,6 @@ public enum UnitEnum {
 	PERCENTAGE("Percentage", "%"),
 	KM("Kilometre", "km"),
 	MM("Millimetre", "mm"),
-	KMH("Kilometres per hour", "km/h"),
-	MPH("Miles per hour", "mph"),
 	MS("Ketres per second", "m/s"),
 	HPA("Hectopascal", "hPa");
 
