@@ -40,7 +40,7 @@ public class DownloadService implements DownloadI {
 		return downloadObservationsDTO("temp.xml");
 	}
 
-	private ObservationsDTO downloadObservationsDTO(String fileName) {
+	public ObservationsDTO downloadObservationsDTO(String fileName) {
 		log.info("starting download");
 		ObservationsDTO observations = null;
 		try {
@@ -51,26 +51,10 @@ public class DownloadService implements DownloadI {
 				log.info("offline download url is " + pathToFile);
 				observations = (ObservationsDTO) jaxbUnmarshaller.unmarshal(new File(pathToFile));
 			} else {
-				log.info("online download url is " + weatherProperties.getDownloadUrl());
-				// TODO only download if time since last download is >1 minutes.
-				// TODO (After first download start ~15min intervals, compare results and only retry without spam if didn't get a newer result).
-				String downloadURL = weatherProperties.getDownloadUrl();
-				URL url = new URL(downloadURL);
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-				String targetPath = "src/main/resources/static/observations/" + fileName;
-				File targetFile = new File(targetPath);
-				try {
-					initHttpConnection(conn);
-					conn.connect();
-					BufferedInputStream in = new BufferedInputStream(conn.getInputStream());
-					OutputStream out = FileUtils.openOutputStream(targetFile);
-					IOUtils.copy(in, out);
-					in.close();
-					out.close();
-				} finally {
-					conn.disconnect();
-				}
-				observations = (ObservationsDTO) jaxbUnmarshaller.unmarshal(targetFile); // new URL(downloadURL)
+				String downloadUrl = weatherProperties.getDownloadUrl();
+				log.info("online download url is " + downloadUrl);
+				File targetFile = downloadToFile(downloadUrl, fileName);
+				observations = (ObservationsDTO) jaxbUnmarshaller.unmarshal(targetFile);
 			}
 		} catch (JAXBException e) {
 			log.error("jaxb failed", e);
@@ -84,15 +68,31 @@ public class DownloadService implements DownloadI {
 		return observations;
 	}
 
+	private File downloadToFile(String downloadURL, String fileName) throws Exception {
+		URL url = new URL(downloadURL);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		String targetPath = "src/main/resources/static/observations/" + fileName;
+		File targetFile = new File(targetPath);
+		initHttpConnection(conn);
+		conn.connect();
+		BufferedInputStream in = new BufferedInputStream(conn.getInputStream());
+		OutputStream out = FileUtils.openOutputStream(targetFile);
+		IOUtils.copy(in, out);
+		in.close();
+		out.close();
+		conn.disconnect();
+		return targetFile;
+	}
+
 	private void initHttpConnection(HttpURLConnection c) throws ProtocolException {
-//		c.setRequestProperty("Content-type", "application/x-www-form-urlencoded");
+		//c.setRequestProperty("Content-type", "application/x-www-form-urlencoded");
 		c.setRequestMethod("GET");
 		//c.setRequestProperty("Host", "www.ilmateenistus.ee");
 		c.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8");
-//		c.setRequestProperty("Accept-Encoding", "gzip, deflate");
-//		c.setRequestProperty("Accept-Language", "en-US,en;q=0.9,et;q=0.8");
-//		c.setRequestProperty("DNT", "1");
-//		c.setRequestProperty("Upgrade-Insecure-Requests", "1");
+		//c.setRequestProperty("Accept-Encoding", "gzip, deflate");
+		//c.setRequestProperty("Accept-Language", "en-US,en;q=0.9,et;q=0.8");
+		//c.setRequestProperty("DNT", "1");
+		//c.setRequestProperty("Upgrade-Insecure-Requests", "1");
 		c.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36");
 	}
 
