@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-class UnitUtil {
+public class UnitUtil {
 	private UnitUtil() {
 		throw new IllegalStateException("Utility class!");
 	}
@@ -23,7 +23,7 @@ class UnitUtil {
 		return ms != null ? ms * (3600 / 1609.3) : null;
 	}
 
-	static Double round(Double value) {
+	public static Double round(Double value) {
 		return round(value, 2);
 	}
 

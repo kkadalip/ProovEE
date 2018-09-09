@@ -23,25 +23,25 @@ public class ObservationStats {
 	private Long id;
 
 	@OneToOne(targetEntity = Stats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Stats statsVisibility;
+	private Stats visibility;
 	@OneToOne(targetEntity = Stats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Stats statsAirPressure;
+	private Stats airPressure;
 	@OneToOne(targetEntity = Stats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Stats statsHumidity;
+	private Stats humidity;
 	@OneToOne(targetEntity = Stats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Stats statsAirTemperature;
+	private Stats airTemperature;
 	@OneToOne(targetEntity = Stats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Stats statsWindDirection;
+	private Stats windDirection;
 	@OneToOne(targetEntity = Stats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Stats statsWindSpeed;
+	private Stats windSpeed;
 	@OneToOne(targetEntity = Stats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Stats statsWaterLevel;
+	private Stats waterLevel;
 	@OneToOne(targetEntity = Stats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Stats statsWindChillC;
+	private Stats windChillC;
 	@OneToOne(targetEntity = Stats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Stats statsWindChillMaxC;
+	private Stats windChillMaxC;
 	@OneToOne(targetEntity = Stats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Stats statsWindChillF;
+	private Stats windChillF;
 	@OneToOne(targetEntity = Stats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Stats statsWindChillMaxF;
+	private Stats windChillMaxF;
 }

@@ -3,12 +3,14 @@ package proov.model.weather.xml;
 import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.Objects;
 
 import lombok.extern.slf4j.Slf4j;
 import proov.enums.TempEnum;
 import proov.enums.UnitEnum;
 import proov.model.weather.xml.Statistics.ObservationStats;
 import proov.model.weather.xml.Statistics.Stats;
+import proov.util.UnitUtil;
 import proov.util.WindChillUtil;
 
 @Slf4j
@@ -27,7 +29,7 @@ public class ConversionUtil {
 		List<StationUI> stationUIs = convertStationDTOtoUI(o.getStations());
 		obsUI.setStations(stationUIs);
 		try {
-			obsUI.setObservationStatistics(calculateAndSetAverages(stationUIs, obsUI));
+			obsUI.setStatistics(calculateAndSetAverages(stationUIs));
 		} catch (Exception ex) {
 			log.error("Calculating and setting averages failed", ex);
 		}
@@ -72,7 +74,7 @@ public class ConversionUtil {
 		return stationUIs;
 	}
 
-	private static ObservationStats calculateAndSetAverages(List<StationUI> stationUIs, ObservationsUI obsUI) {
+	private static ObservationStats calculateAndSetAverages(List<StationUI> stationUIs) {
 		List<Double> visibilities = new ArrayList<>();
 		List<Double> airPressures = new ArrayList<>();
 		List<Double> humidities = new ArrayList<>();
@@ -120,17 +122,17 @@ public class ConversionUtil {
 			}
 		}
 		return ObservationStats.builder()
-				.statsVisibility(getStatsD(visibilities))
-				.statsAirPressure(getStatsD(airPressures))
-				.statsHumidity(getStatsD(humidities))
-				.statsAirTemperature(getStatsD(airtemps))
-				.statsWindDirection(getStatsD(windDirections))
-				.statsWindSpeed(getStatsD(windSpeeds))
-				.statsWaterLevel(getStatsD(waterLevels))
-				.statsWindChillC(getStatsD(windChillCs))
-				.statsWindChillMaxC(getStatsD(windChillMaxCs))
-				.statsWindChillF(getStatsD(windChillFs))
-				.statsWindChillMaxF(getStatsD(windChillMaxFs))
+				.visibility(getStatsD(visibilities))
+				.airPressure(getStatsD(airPressures))
+				.humidity(getStatsD(humidities))
+				.airTemperature(getStatsD(airtemps))
+				.windDirection(getStatsD(windDirections))
+				.windSpeed(getStatsD(windSpeeds))
+				.waterLevel(getStatsD(waterLevels))
+				.windChillC(getStatsD(windChillCs))
+				.windChillMaxC(getStatsD(windChillMaxCs))
+				.windChillF(getStatsD(windChillFs))
+				.windChillMaxF(getStatsD(windChillMaxFs))
 				.build();
 	}
 
@@ -140,14 +142,17 @@ public class ConversionUtil {
 
 	private static DoubleSummaryStatistics getSummaryStatsD(List<Double> data) {
 		try {
-			return data != null ? data.stream().mapToDouble(x -> x).summaryStatistics() : null;
+			if (data == null) {	
+				return null;
+			}
+			return data.stream().filter(Objects::nonNull).mapToDouble(x -> x).summaryStatistics();
 		} catch (NullPointerException ex) {
 			log.error("getSummaryStatsD NullPointerException", ex);
-			return null;
 		}
+		return null;
 	}
 
 	private static Stats convertToStatsD(DoubleSummaryStatistics d) {
-		return d != null ? Stats.builder().min(d.getMin()).max(d.getMax()).average(d.getAverage()).count(d.getCount()).build() : null;
+		return d != null ? Stats.builder().min(d.getMin()).max(d.getMax()).average(UnitUtil.round(d.getAverage())).count(d.getCount()).build() : null;
 	}
 }

@@ -25,5 +25,5 @@ public class ObservationsUI {
 	private Long timestamp;
 
 	@OneToOne(targetEntity = ObservationStats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private ObservationStats observationStatistics;
+	private ObservationStats statistics;
 }
