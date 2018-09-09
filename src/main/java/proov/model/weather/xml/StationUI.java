@@ -25,24 +25,16 @@ class StationUI {
 	private Double latitude;
 	private String phenomenon;
 	private Double visibility;
-	private String visibilityUnit;
 	private Double precipitations;
 	private Double airPressure;
-	private String airPressureUnit;
 	private Double relativeHumidity;
-	private String relativeHumidityUnit;
 	private Double airTemperature;
-	private String airTemperatureUnit;
 	private Double windDirection;
-	private String windDirectionUnit;
 	private Double windSpeed;
 	private Double windSpeedMax;
-	private String windSpeedUnit;
 	private Double waterLevel;
 	private Double waterLevelEh2000;
-	private String waterLevelUnit;
 	private Double waterTemperature;
-	private String waterTemperatureUnit;
 	private Double uvIndex;
 
 	private Double windChillC;

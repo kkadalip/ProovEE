@@ -24,6 +24,9 @@ public class ObservationsUI {
 	private List<StationUI> stations;
 	private Long timestamp;
 
+	@OneToOne(targetEntity = ObservationUnits.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private ObservationUnits units;
+	
 	@OneToOne(targetEntity = ObservationStats.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private ObservationStats statistics;
 }

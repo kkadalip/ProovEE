@@ -28,12 +28,26 @@ public class ConversionUtil {
 		obsUI.setTimestamp(o.getTimestamp());
 		List<StationUI> stationUIs = convertStationDTOtoUI(o.getStations());
 		obsUI.setStations(stationUIs);
+		obsUI.setUnits(getObservationUnits());
 		try {
 			obsUI.setStatistics(calculateAndSetAverages(stationUIs));
 		} catch (Exception ex) {
-			log.error("Calculating and setting averages failed", ex);
+			log.error("Calculating and setting statistics failed", ex);
 		}
 		return obsUI;
+	}
+
+	private static ObservationUnits getObservationUnits() {
+		return ObservationUnits.builder()
+				.visibility(UnitEnum.KM.getSymbol())
+				.airPressure(UnitEnum.HPA.getSymbol())
+				.relativeHumidity(UnitEnum.PERCENTAGE.getSymbol())
+				.airTemperature(TempEnum.C.getSymbol())
+				.windDirection(UnitEnum.ANGLE.getSymbol())
+				.windSpeed(UnitEnum.MS.getSymbol())
+				.waterLevel(UnitEnum.MM.getSymbol())
+				.waterTemperature(TempEnum.C.getSymbol())
+				.build();
 	}
 
 	private static List<StationUI> convertStationDTOtoUI(List<StationDTO> stationDTOs) {
@@ -46,24 +60,16 @@ public class ConversionUtil {
 			sUI.setLatitude(sDTO.getLatitude());
 			sUI.setPhenomenon(sDTO.getPhenomenon());
 			sUI.setVisibility(sDTO.getVisibility());
-			sUI.setVisibilityUnit(UnitEnum.KM.getSymbol());
 			sUI.setPrecipitations(sDTO.getPrecipitations());
 			sUI.setAirPressure(sDTO.getAirPressure());
-			sUI.setAirPressureUnit(UnitEnum.HPA.getSymbol());
 			sUI.setRelativeHumidity(sDTO.getRelativeHumidity());
-			sUI.setRelativeHumidityUnit(UnitEnum.PERCENTAGE.getSymbol());
 			sUI.setAirTemperature(sDTO.getAirTemperature());
-			sUI.setAirTemperatureUnit(TempEnum.C.getSymbol());
 			sUI.setWindDirection(sDTO.getWindDirection());
-			sUI.setWindDirectionUnit(UnitEnum.ANGLE.getSymbol());
 			sUI.setWindSpeed(sDTO.getWindSpeed());
 			sUI.setWindSpeedMax(sDTO.getWindSpeedMax());
-			sUI.setWindSpeedUnit(UnitEnum.MS.getSymbol());
 			sUI.setWaterLevel(sDTO.getWaterLevel());
 			sUI.setWaterLevelEh2000(sDTO.getWaterLevelEh2000());
-			sUI.setWaterLevelUnit(UnitEnum.MM.getSymbol());
 			sUI.setWaterTemperature(sDTO.getWaterTemperature());
-			sUI.setWaterTemperatureUnit(TempEnum.C.getSymbol());
 			sUI.setUvIndex(sDTO.getUvIndex());
 			sUI.setWindChillC(WindChillUtil.calcWindChillInC(sDTO.getAirTemperature(), sDTO.getWindSpeed()));
 			sUI.setWindChillF(WindChillUtil.calcWindChillInF(sDTO.getAirTemperature(), sDTO.getWindSpeed()));
@@ -142,7 +148,7 @@ public class ConversionUtil {
 
 	private static DoubleSummaryStatistics getSummaryStatsD(List<Double> data) {
 		try {
-			if (data == null) {	
+			if (data == null) {
 				return null;
 			}
 			return data.stream().filter(Objects::nonNull).mapToDouble(x -> x).summaryStatistics();
