@@ -82,24 +82,32 @@ public class ConversionUtil {
 
 	private static ObservationStats calculateAndSetAverages(List<StationUI> stationUIs) {
 		List<Double> visibilities = new ArrayList<>();
+		List<Double> uvIndexes = new ArrayList<>();
 		List<Double> airPressures = new ArrayList<>();
 		List<Double> humidities = new ArrayList<>();
 		List<Double> airtemps = new ArrayList<>();
 		List<Double> windDirections = new ArrayList<>();
 		List<Double> windSpeeds = new ArrayList<>();
+		List<Double> windSpeedMaxs = new ArrayList<>();
 		List<Double> waterLevels = new ArrayList<>();
+		List<Double> waterLevelEH2000s = new ArrayList<>();
+		List<Double> waterTemperatures = new ArrayList<>();
 		List<Double> windChillCs = new ArrayList<>();
 		List<Double> windChillMaxCs = new ArrayList<>();
 		List<Double> windChillFs = new ArrayList<>();
 		List<Double> windChillMaxFs = new ArrayList<>();
 		for (StationUI s : stationUIs) {
 			add(visibilities, s.getVisibility());
+			add(uvIndexes, s.getUvIndex());
 			add(airPressures, s.getAirPressure());
 			add(humidities, s.getRelativeHumidity());
 			add(airtemps, s.getAirTemperature());
 			add(windDirections, s.getWindDirection());
 			add(windSpeeds, s.getWindSpeed());
+			add(windSpeedMaxs, s.getWindSpeedMax());
 			add(waterLevels, s.getWaterLevel());
+			add(waterLevelEH2000s, s.getWaterLevelEh2000());
+			add(waterTemperatures, s.getWaterTemperature());
 			add(windChillCs, s.getWindChillC());
 			add(windChillMaxCs, s.getWindChillMaxC());
 			add(windChillFs, s.getWindChillF());
@@ -107,12 +115,16 @@ public class ConversionUtil {
 		}
 		return ObservationStats.builder()
 				.visibility(getStatsD(visibilities))
+				.uvIndex(getStatsD(uvIndexes))
 				.airPressure(getStatsD(airPressures))
 				.humidity(getStatsD(humidities))
 				.airTemperature(getStatsD(airtemps))
 				.windDirection(getStatsD(windDirections))
 				.windSpeed(getStatsD(windSpeeds))
+				.windSpeedMax(getStatsD(windSpeedMaxs))
 				.waterLevel(getStatsD(waterLevels))
+				.waterLevelEH2000(getStatsD(waterLevelEH2000s))
+				.waterTemperature(getStatsD(waterTemperatures))
 				.windChillC(getStatsD(windChillCs))
 				.windChillMaxC(getStatsD(windChillMaxCs))
 				.windChillF(getStatsD(windChillFs))
