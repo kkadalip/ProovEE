@@ -36,11 +36,8 @@ public class DownloadService implements DownloadI {
 		this.weatherProperties = weatherProperties;
 	}
 
-	public ObservationsDTO downloadObservationsDTO() {
-		return downloadObservationsDTO("temp.xml");
-	}
-
 	public ObservationsDTO downloadObservationsDTO(String fileName) {
+		String resultFileName = fileName != null ? fileName : "temp.xml";
 		log.info("starting download");
 		ObservationsDTO observations = null;
 		try {
@@ -53,7 +50,7 @@ public class DownloadService implements DownloadI {
 			} else {
 				String downloadUrl = weatherProperties.getDownloadUrl();
 				log.info("online download url is " + downloadUrl);
-				File targetFile = downloadToFile(downloadUrl, fileName);
+				File targetFile = downloadToFile(downloadUrl, resultFileName);
 				observations = (ObservationsDTO) jaxbUnmarshaller.unmarshal(targetFile);
 			}
 		} catch (JAXBException e) {
@@ -97,8 +94,8 @@ public class DownloadService implements DownloadI {
 	}
 
 	@Override
-	public ObservationsUI downloadObservationsUI() {
-		return ConversionUtil.convertDTOtoUI(downloadObservationsDTO());
+	public ObservationsUI downloadObservationsUI(String fileName) {
+		return ConversionUtil.convertDTOtoUI(downloadObservationsDTO(fileName));
 	}
 
 	private void debug(ObservationsDTO observations) {

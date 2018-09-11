@@ -25,6 +25,7 @@ public class ConversionUtil {
 			return null;
 		}
 		ObservationsUI obsUI = new ObservationsUI();
+		log.info("setting timestamp to " + o.getTimestamp());
 		obsUI.setTimestamp(o.getTimestamp());
 		List<StationUI> stationUIs = convertStationDTOtoUI(o.getStations());
 		obsUI.setStations(stationUIs);

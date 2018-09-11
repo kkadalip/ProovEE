@@ -10,30 +10,30 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
-import proov.interfaces.DownloadI;
+import proov.interfaces.DbI;
 
 @Slf4j
 @Component
 public class ScheduledTasks {
 	private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-	private final DownloadI downloadI;
+	private final DbI dbI;
 
 	@Autowired
-	public ScheduledTasks(DownloadI downloadI) {
-		this.downloadI = downloadI;
+	public ScheduledTasks(DbI dbI) {
+		this.dbI = dbI;
 	}
 
-	@Scheduled(fixedRate = 300000) // Every 5 minutes (5 minutes * 60000 ms in one minute)
+	@Scheduled(fixedRate = 60000) // Every 1 minutes (1 minutes * 60000 ms in one minute)
 	public void updateObservations() {
 		log.info("updateObservations :: Fixed Rate Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
-		downloadI.downloadObservationsDTO();
+		dbI.updateObservations();
 	}
 
 	@Scheduled(fixedRate = 3600000) // Every 1 hour (60 minutes * 60000 ms in one minute)
 	public void updateObservationsForStatistics() {
 		log.info("updateObservations :: Fixed Rate Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
-		downloadI.downloadObservationsDTO(getHumanReadableTimestamp() + ".xml");
+		dbI.updateObservations(getHumanReadableTimestamp() + ".xml");
 	}
 
 	private String getHumanReadableTimestamp() {
