@@ -1,7 +1,7 @@
 #  Improved REST API for Estonian Weather data
 
 ###### To run tests separately:
-	$ gradle test
+	$ gradlew test
 	
 ## 1) Building the application
 	Open command prompt, navigate to project root, for example:
@@ -12,7 +12,7 @@
     
 ## 2) Starting the application
 	Run in command prompt:
-	$ gradle bootRun
+	$ gradlew bootRun
 	Open http://localhost:8090/
 
 ####  Building and starting with custom variables instead:	
@@ -23,7 +23,7 @@
 
 ## Building and launching an executable JAR (to \build\libs folder)
 	$ cd C:\Users\your.name\Desktop\ProovEE
-	$ gradle bootJar
+	$ gradlew bootJar
 	$ cd build\libs
 	$ java -jar proov-ee-1.0.jar
     
