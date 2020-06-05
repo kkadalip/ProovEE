@@ -8,7 +8,7 @@
 	$ cd C:\Users\your.name\Desktop\ProovEE
 	
 	Run in command prompt:
-    $ gradle build
+    $ gradlew build
     
 ## 2) Starting the application
 	Run in command prompt:
